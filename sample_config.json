@@ -1,0 +1,9 @@
+{
+    "aws":{
+        "accessKeyId": "",
+        "secretAccessKey": "",
+        "endpoint": "https://s3.amazonaws.com"
+    },
+    "expireAge":1209600,
+    "expireBuckets": ["taras-expire"]
+}

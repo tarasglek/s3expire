@@ -1,0 +1,12 @@
+{
+  "name": "s3expire",
+  "description": "Manual s3 bucket expiry tool",
+  "version": "0.0.1",
+  "license": "BSD",
+  "run": "s3expire.js",
+  "dependencies": {
+    "aws-sdk": "*",
+    "async": "*",
+    "tarasglek/taras-s3": "git://github.com/tarasglek/taras-s3#"
+  }
+}
