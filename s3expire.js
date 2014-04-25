@@ -16,20 +16,18 @@ function expireBucket(bucket, callback) {
       return (new Date(x.LastModified).getTime()/1000 + config.expireAge) < now;
     });
     dead = dead.map(function (x) {return {'Key':x.Key}});
-
-    var deadlsls = taras_s3.chunkArray(dead, 1000);
-
-    console.log(deadlsls.length, dead.length, ls.length);
+    
+    console.log(dead.length, ls.length);
 
     stats.keysToDelete = dead.length;
     stats.deleteStart = Date.now();
 
-    function delete1k(deadls, callback) {
-      s3.deleteObjects({'Bucket':bucket,
-                        'Delete':{ 'Objects': deadls}},
-                       callback);
+    function deleteOne(one, callback) {
+      one.Bucket = bucket;
+      s3.deleteObject(one, callback);
+      
     }
-    async.map(deadlsls, delete1k, callback);
+    async.map(dead, deleteOne, callback);
   }
   taras_s3.S3ListObjects(s3, {'Bucket':bucket},
                          function (err, ls) {
@@ -90,7 +88,7 @@ function upload(length) {
 
 if(process.argv.length == 4) {
   //benchmark
-  upload(200);
+  upload(2000);
 } else {
   expire();
 }
