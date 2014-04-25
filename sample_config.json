@@ -1,9 +1,12 @@
 {
     "aws":{
         "accessKeyId": "",
-        "secretAccessKey": "",
-        "endpoint": "https://s3.amazonaws.com"
+        "secretAccessKey": "+4",
+        "endpoint": "ceph.http.endpoint",
+        "s3ForcePathStyle":true,
+        "sslEnabled":false
     },
     "expireAge":1209600,
-    "expireBuckets": ["taras-expire"]
+    "expireAge":0,
+    "expireBuckets": ["taras-bucket"]
 }
